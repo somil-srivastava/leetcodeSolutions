@@ -5,12 +5,12 @@ class commonPrefix {
     Scanner scn = new Scanner(System.in);
     int n = scn.nextInt();
     scn.nextLine();
-    String[] strs = new String[n];
+    String[] str = new String[n];
     for (int i = 0; i < n; i++) {
-      strs[i] = scn.nextLine();
+      str[i] = scn.nextLine();
     }
     Solution sol = new Solution();
-    String s = sol.longestCommonPrefix(strs);
+    String s = sol.longestCommonPrefix(str);
     System.out.println(s);
   }
 }
@@ -20,21 +20,23 @@ class Solution {
     if (str[0].charAt(0) != str[1].charAt(0)) {
       return "\"\"";
     } else {
-      char[] c = new char[str[0].length()];
-      int j = 1;
-      for(int i=0;i<str[0].length();i++,j++){
-        if(j > str[i].length()){
-          continue;
-        }
-        if(str[i].charAt(i) == str[j].charAt(i)){
-          c[i] = str[i].charAt(i);
-        } else {
+      int j=1;
+      for(int i=0;i<str.length;i++,j++){
+        if(j==str.length){
           break;
         }
+        for(int k=0;k<((str[i].length() < str[j].length()) ? str[i].length() : str[j].length());k++){
+          if(str[i].charAt(k) == str[j].charAt(k)){
+            char c = str[i].charAt(k);
+            System.out.println(c);
+          } else {
+            break;
+          }
+        }
       }
-      return c.toString();
     }
-
+    
+    return null;
   }
 
 }
