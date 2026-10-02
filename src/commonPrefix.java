@@ -17,26 +17,26 @@ class commonPrefix {
 
 class Solution {
   public String longestCommonPrefix(String[] str) {
+    char[] c = new char[str[0].length()];
     if (str[0].charAt(0) != str[1].charAt(0)) {
       return "\"\"";
     } else {
-      int j=1;
-      for(int i=0;i<str.length;i++,j++){
-        if(j==str.length){
+      for(int i=0,n=0;i<str.length && n < str.length;i++,n++){
+        if((n+1) == str.length){
           break;
         }
-        for(int k=0;k<((str[i].length() < str[j].length()) ? str[i].length() : str[j].length());k++){
-          if(str[i].charAt(k) == str[j].charAt(k)){
-            char c = str[i].charAt(k);
-            System.out.println(c);
+        for(int j=0;j<(str[n].length()<str[n+1].length()?str[n].length():str[n+1].length());j++){
+          if(str[n].charAt(j) == str[n+1].charAt(j)){
+            continue;
           } else {
             break;
           }
         }
+        c[i] = str[n].charAt(i);
       }
     }
     
-    return null;
+    return c.toString();
   }
 
 }
